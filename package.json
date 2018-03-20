@@ -1,0 +1,26 @@
+{
+  "name": "tailwindcss-flexbox-order",
+  "version": "0.1.0",
+  "description": "Generate classes to easily order flex-items",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/035media/tailwindcss-flexbox-order.git"
+  },
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "tailwind css",
+    "tailwindcss-plugin",
+    "plugin",
+    "flexbox",
+    "flex",
+    "order"
+  ],
+  "author": "035 Media Group",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/035media/tailwindcss-flexbox-order/issues"
+  },
+  "homepage": "https://github.com/035media/tailwindcss-flexbox-order#readme"
+}
