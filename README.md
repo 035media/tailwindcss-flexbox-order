@@ -1,23 +1,55 @@
-# Flexbox Order Tailwind Plugin
+# Flexbox Order - TailwindCSS Plugin
+
+[![npm](https://img.shields.io/npm/v/tailwindcss-flexbox-order.svg?style=flat-square)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
+[![npm](https://img.shields.io/npm/dt/tailwindcss-flexbox-order.svg?style=flat-square)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
+
+This plugin generates classes for ordering flexbox items.
 
 ## Installation
 
-Add this plugin to your project:
+Just pull it in through npm the regular way:
 
 ```bash
-# Install via npm
-npm install --save-dev tailwindcss-flexbox-order
+$ npm install --save-dev tailwindcss-flexbox-order
 ```
+
+Or the cool kidz way:
+
+```bash
+$ npm i -D tailwindcss-flexbox-order
+```
+
+Or the really stressed way:
+
+```bash
+$ npm isntall -D tailwindcss-flexbox-order
+```
+
+*(PS. That actually works.)*
 
 ## Usage
 
-This plugin exposes options for you to use, if you want to. Here are some examples for adding it to your project plugins.
+To just get going and generate some sensible defaults you don't have to pass 
+any options.
 
 ```js
 require('tailwindcss-flexbox-order')()
 ```
 
-Calling the plugin without any arguments would generate the following classes, and all their responsive variants:
+Just add it to the plugins array in your Tailwind config.
+
+```js
+plugins: [
+    require('tailwindcss/plugins/container')({
+        // center: true,
+        // padding: '1rem',
+    }),
+    require('tailwindcss-flexbox-order')(),
+],
+```
+
+Doing the above would generate the following classes, 
+and their responsive variants:
 
 ```css
 .-order-1 { order: -1; }
@@ -29,7 +61,7 @@ Calling the plugin without any arguments would generate the following classes, a
 .order-5 { order: 5; }
 ```
 
-The plugin accepts an array of numbers that you want to generate classes for.  
+You can pass an array of numbers that you want to generate classes for.  
 The second argument is an array of the variants you want.
 
 ```js
@@ -44,14 +76,21 @@ require('tailwindcss-flexbox-order')([1], ['hover', 'responsive']),
 @media (min-width: 576px) {
     .sm\:order-1 { order: 1; }
 }
+
+/* .......... */
 ```
 
+Need a lot of classes for some reason?  
+Pull in lodash at the top of the config file and use the `.range()` function.
+
 ```js
-const _ = require('lodash');
+var _ = require('lodash');
 
-// .....
+// ..........
 
-require('tailwindcss-flexbox-order')(_.range(-10, 25+1), []),
+// lodash does not include the last number in the range.
+// Passing the empty array as the second arguments will prevent generation of responsive variants.
+require('tailwindcss-flexbox-order')(_.range(-10, 25+1), []), 
 ```
 
 ```css
@@ -61,5 +100,8 @@ require('tailwindcss-flexbox-order')(_.range(-10, 25+1), []),
 .order-24 { order: 24; }
 .order-25 { order: 25; }
 
-/* No variants */
+/* No variants is generated because of the empty array */
 ```
+
+## License
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
