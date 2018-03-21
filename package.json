@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-flexbox-order",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Generate classes to easily order flex-items",
   "main": "index.js",
   "repository": {
