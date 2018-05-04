@@ -1,7 +1,7 @@
 {
   "name": "tailwindcss-flexbox-order",
   "version": "0.2.0",
-  "description": "Generate classes to easily order flex-items",
+  "description": "Generate utility classes to easily order flex-items",
   "main": "index.js",
   "repository": {
     "type": "git",
