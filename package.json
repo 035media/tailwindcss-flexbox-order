@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/035media/tailwindcss-flexbox-order/issues"
   },
-  "homepage": "https://github.com/035media/tailwindcss-flexbox-order#readme"
+  "homepage": "https://github.com/035media/tailwindcss-flexbox-order#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
 }
