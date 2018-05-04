@@ -3,105 +3,155 @@
 [![npm](https://img.shields.io/npm/v/tailwindcss-flexbox-order.svg?style=flat-square)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
 [![npm](https://img.shields.io/npm/dt/tailwindcss-flexbox-order.svg?style=flat-square)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
 
-This plugin generates classes for ordering flexbox items.
+This plugin generates classes for ordering flexbox and grid items using `order: #;`.
 
 ## Installation
 
-Just pull it in through npm the regular way:
+Pull it in through npm or yarn:
 
 ```bash
-$ npm install --save-dev tailwindcss-flexbox-order
+npm install tailwindcss-flexbox-order
 ```
-
-Or the cool kidz way:
 
 ```bash
-$ npm i -D tailwindcss-flexbox-order
+yarn add tailwindcss-flexbox-order
 ```
-
-Or the really stressed way:
-
-```bash
-$ npm isntall -D tailwindcss-flexbox-order
-```
-
-*(PS. That actually works.)*
 
 ## Usage
 
-To just get going and generate some sensible defaults you don't have to pass 
-any options.
-
-```js
-require('tailwindcss-flexbox-order')()
-```
-
-Just add it to the plugins array in your Tailwind config.
+To get going with some sensible defaults you don't have to pass any options.\
+Just add it to the plugins array of your Tailwind config.
 
 ```js
 plugins: [
-    require('tailwindcss/plugins/container')({
-        // center: true,
-        // padding: '1rem',
-    }),
-    require('tailwindcss-flexbox-order')(),
+  // Other plugins
+  require('tailwindcss-flexbox-order')(),
 ],
 ```
 
-Doing the above would generate the following classes, 
-and their responsive variants:
+By default the plugin generates the following classes, with all of their responsive variants:
 
 ```css
 .-order-1 { order: -1; }
-.order-0 { order: 0; }
-.order-1 { order: 1; }
-.order-2 { order: 2; }
-.order-3 { order: 3; }
-.order-4 { order: 4; }
-.order-5 { order: 5; }
+.order-0  { order:  0; }
+.order-1  { order:  1; }
+.order-2  { order:  2; }
+.order-3  { order:  3; }
+.order-4  { order:  4; }
+.order-5  { order:  5; }
 ```
 
-You can pass an array of numbers that you want to generate classes for.  
-The second argument is an array of the variants you want.
+### Options
+
+You can pass an object to override the default settings.
 
 ```js
-require('tailwindcss-flexbox-order')([1], ['hover', 'responsive']),
+// Default options
+{
+  range: {
+    from: -1,
+    to: 5,
+  },
+  values: false,
+  variants: ['responsive'],
+}
+```
+
+#### range
+
+Range takes an object with `from` and `to` keys with integer values and generates them and every number in between.
+
+The default option is `{ from: -1, to: 5 }`.
+
+```js
+range: {
+  from: -2,
+  to: 2,
+},
 ```
 
 ```css
-.order-1 { order: 1; }
-
-.hover\:order-1:hover { order: 1; }
-
-@media (min-width: 576px) {
-    .sm\:order-1 { order: 1; }
-}
-
-/* .......... */
+.-order-2 { order: -2; }
+.-order-1 { order: -1; }
+.order-0  { order:  0; }
+.order-1  { order:  1; }
+.order-2  { order:  2; }
 ```
 
-Need a lot of classes for some reason?  
-Pull in lodash at the top of the config file and use the `.range()` function.
+Range can also be set to `false` if you want to disable range generation.
 
 ```js
-var _ = require('lodash');
+range: false,
+```
 
-// ..........
+```css
+/* No range generated */
+```
 
-// lodash does not include the last number in the range.
-// Passing the empty array as the second arguments will prevent generation of responsive variants.
-require('tailwindcss-flexbox-order')(_.range(-10, 25+1), []), 
+#### values
+
+Values can be an object with key/value pairs.\
+Your strings are automatically escaped.
+
+The default option is `false`.
+
+```js
+values: {
+  'first': -999,
+  'last': 999,
+  '$p3ci@l': 1337,
+}
+```
+
+```css
+.order-first { order: -999; }
+.order-last  { order:  999; }
+.order-\$p3ci\@l { order: 1337; }
+```
+
+Or it can take an array of integers.
+
+```js
+values: [-10, 0, 10, 20],
 ```
 
 ```css
 .-order-10 { order: -10; }
-.-order-9 { order: -9; }
-/* .......... */
-.order-24 { order: 24; }
-.order-25 { order: 25; }
-
-/* No variants is generated because of the empty array */
+.order-0   { order:   0; }
+.order-10  { order:  10; }
+.order-20  { order:  20; }
 ```
 
+#### variants
+
+Variants can be set to an array with any of the supported Tailwind variants.
+
+The default option is `['responsive']`.
+
+```js
+variants: ['responsive', 'hover', 'focus', 'active', 'group-hover']
+```
+
+## Upgrading from 0.1 or 0.2
+
+Earlier versions took an array of integers as the first argument, and another array of variants as the second argument.
+
+Starting at 1.0, all options should be passed as a plain object.
+
+```js
+// OLD
+require('tailwindcss-flexbox-order')([-1, 1, 5, 10], ['responsive'])
+
+// NEW
+require('tailwindcss-flexbox-order')({
+    range: false,
+    values: [-1, 1, 5, 10],
+    variants: ['responsive'],
+})
+```
+
+All versions will still generate the same output if no options are passed.
+
 ## License
+
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
