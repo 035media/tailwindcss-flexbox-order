@@ -24,6 +24,12 @@
   },
   "homepage": "https://github.com/035media/tailwindcss-flexbox-order#readme",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.11",
+    "postcss": "^7.0.14",
+    "tailwindcss": "^1.0.0-beta.4"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1",
+    "jest-matcher-css": "^1.0.3"
   }
 }
