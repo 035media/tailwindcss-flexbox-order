@@ -96,3 +96,56 @@ test('it generates the default order classes', () => {
     `)
   })
 })
+
+test('it generates order classes by defining a range', () => {
+  const range = {
+    from: -2,
+    to: 2
+  }
+
+  return generatePluginCss({ range }).then(css => {
+    expect(css).toMatchCss(`
+      .-order-2 {
+        order: -2;
+      }
+
+      .-order-1 {
+        order: -1;
+      }
+
+      .order-0 {
+        order: 0;
+      }
+
+      .order-1 {
+        order: 1;
+      }
+
+      .order-2 {
+        order: 2;
+      }
+
+      @media (min-width: 1024px) {
+        .lg\\:-order-2 {
+          order: -2;
+        }
+
+        .lg\\:-order-1 {
+          order: -1;
+        }
+
+        .lg\\:order-0 {
+          order: 0;
+        }
+
+        .lg\\:order-1 {
+          order: 1;
+        }
+
+        .lg\\:order-2 {
+          order: 2;
+        }
+      }
+    `)
+  })
+})
