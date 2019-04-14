@@ -31,5 +31,8 @@
   "devDependencies": {
     "jest": "^24.7.1",
     "jest-matcher-css": "^1.0.3"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
