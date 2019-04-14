@@ -149,3 +149,101 @@ test('it generates order classes by defining a range', () => {
     `)
   })
 })
+
+test('it generates order classes by defining values', () => {
+  const values = [-10, 0, 10, 20]
+
+  return generatePluginCss({ values }).then(css => {
+    expect(css).toMatchCss(`
+      .-order-1 {
+        order: -1;
+      }
+
+      .order-0 {
+        order: 0;
+      }
+
+      .order-1 {
+        order: 1;
+      }
+
+      .order-2 {
+        order: 2;
+      }
+
+      .order-3 {
+        order: 3;
+      }
+
+      .order-4 {
+        order: 4;
+      }
+
+      .order-5 {
+        order: 5;
+      }
+
+      .-order-10 {
+        order: -10;
+      }
+
+      .order-0 {
+        order: 0;
+      }
+
+      .order-10 {
+        order: 10;
+      }
+
+      .order-20 {
+        order: 20;
+      }
+
+      @media (min-width: 1024px) {
+        .lg\\:-order-1 {
+          order: -1;
+        }
+
+        .lg\\:order-0 {
+          order: 0;
+        }
+
+        .lg\\:order-1 {
+          order: 1;
+        }
+
+        .lg\\:order-2 {
+          order: 2;
+        }
+
+        .lg\\:order-3 {
+          order: 3;
+        }
+
+        .lg\\:order-4 {
+          order: 4;
+        }
+
+        .lg\\:order-5 {
+          order: 5;
+        }
+
+        .lg\\:-order-10 {
+          order: -10;
+        }
+
+        .lg\\:order-0 {
+          order: 0;
+        }
+
+        .lg\\:order-10 {
+          order: 10;
+        }
+
+        .lg\\:order-20 {
+          order: 20;
+        }
+      }
+    `)
+  })
+})
