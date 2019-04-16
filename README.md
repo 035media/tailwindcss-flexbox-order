@@ -1,7 +1,8 @@
 # Flexbox Order - TailwindCSS Plugin
 
-[![npm](https://img.shields.io/npm/v/tailwindcss-flexbox-order.svg?style=flat-square)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
-[![npm](https://img.shields.io/npm/dt/tailwindcss-flexbox-order.svg?style=flat-square)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
+[![npm version](https://img.shields.io/npm/v/tailwindcss-flexbox-order.svg)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
+[![npm downloads](https://img.shields.io/npm/dt/tailwindcss-flexbox-order.svg)](https://www.npmjs.com/package/tailwindcss-flexbox-order)
+[![Build Status](https://travis-ci.com/035media/tailwindcss-flexbox-order.svg?branch=master)](https://travis-ci.com/035media/tailwindcss-flexbox-order)
 
 This plugin generates classes for ordering flexbox and grid items using `order: #;`.
 
