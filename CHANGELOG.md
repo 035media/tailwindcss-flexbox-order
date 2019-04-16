@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.0 - 2019-04-16
+
+### Added
+
+- Added tests. - Thanks @opdavies.
+
+### Changed
+
+- Updated readme.
+
+### Removed
+
+- Removed lock files from version control.
+
 ## 1.0.0 - 2018-05-04
 
 ### Added
