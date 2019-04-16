@@ -63,7 +63,7 @@ module.exports = function (options = {}) {
                     ? { [`.-order-${-key}`]: { order: value } }
                     : { [`.order-${key}`]: { order: value } };
             } else {
-                return { [`.order-${e(key)}`]: { order: value } };
+                return { [`.${e('order-'+key)}`]: { order: value } };
             }
         }
     };
