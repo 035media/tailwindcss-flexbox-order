@@ -7,14 +7,10 @@ This plugin generates classes for ordering flexbox and grid items using `order: 
 
 ## Installation
 
-Pull it in through npm or yarn:
+Pull it in through npm:
 
 ```bash
-npm install tailwindcss-flexbox-order
-```
-
-```bash
-yarn add tailwindcss-flexbox-order
+npm install --save-dev tailwindcss-flexbox-order
 ```
 
 ## Usage
@@ -78,14 +74,10 @@ range: {
 .order-2  { order:  2; }
 ```
 
-Range can also be set to `false` if you want to disable range generation.
+Setting range to `false` disables range generation.
 
 ```js
 range: false,
-```
-
-```css
-/* No range generated */
 ```
 
 #### values
@@ -139,10 +131,10 @@ Earlier versions took an array of integers as the first argument, and another ar
 Starting at 1.0, all options should be passed as a plain object.
 
 ```js
-// OLD
+// OLD - 0.x
 require('tailwindcss-flexbox-order')([-1, 1, 5, 10], ['responsive'])
 
-// NEW
+// NEW - 1.x
 require('tailwindcss-flexbox-order')({
     range: false,
     values: [-1, 1, 5, 10],
